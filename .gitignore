@@ -1,0 +1,12 @@
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+
+ecs_sample/Library
+ecs_sample/Logs
+ecs_sample/Recordings
+ecs_sample/Temp
+ecs_sample/UserSettings
+
+/Assets/SceneDependencyCache
