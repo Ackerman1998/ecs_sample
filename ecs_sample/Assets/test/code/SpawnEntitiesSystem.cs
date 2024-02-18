@@ -40,8 +40,11 @@ public partial struct SpawnEntitiesSystem : ISystem
                 {
     
                     var entity = state.EntityManager.Instantiate(data.m_PrefabEntity);
-                    ecb.SetComponent(entity, LocalTransform.FromPosition(new float3(j - halfSize.x, 0, i - halfSize.y)));
-                    ecb.AddComponent<TargetMovePointData>(entity, new TargetMovePointData() { targetPoint = new float3(m_Random.NextFloat(m_RandomRange.x, m_RandomRange.y), 0, m_Random.NextFloat(m_RandomRange.z, m_RandomRange.w)) });
+                    LocalTransform localParam = LocalTransform.FromPosition(new float3(j - halfSize.x, 0, i - halfSize.y));
+                    localParam.Scale = 0.5f;
+                    ecb.SetComponent(entity, localParam);
+                    ecb.AddComponent<TargetMovePointData>(entity, new TargetMovePointData() {
+                        targetPoint = new float3(m_Random.NextFloat(m_RandomRange.x, m_RandomRange.y), 0, m_Random.NextFloat(m_RandomRange.z, m_RandomRange.w)) });
                 }
             }
             state.Enabled = false;
@@ -60,16 +63,28 @@ public partial struct SpawnEntitiesSystem : ISystem
         void OnCreate(ref SystemState state)
         {
             state.RequireForUpdate<TargetMovePointData>();
+            if (SystemAPI.TryGetSingleton<EntitiesComponentData>(out var dt))
+            {
+                //m_RandomRange = new float4(-dt.m_Row * 0.5f, dt.m_Row * 0.5f, -dt.m_Col * 0.5f, dt.m_Col * 0.5f);
+                m_RandomRange = new float4(-dt.m_Row * 50f, dt.m_Row * 50f, -dt.m_Col * 50f, dt.m_Col * 50f);
+            }
+            else
+            {
+                m_RandomRange = new float4(-100, 100, -100,100);
+                //m_RandomRange = new float4(-dt.m_Row * 50f, dt.m_Row * 50f, -dt.m_Col * 50f, dt.m_Col * 50f);
+            }
         }
         void OnStartRunning(ref SystemState state)
         {
             if (SystemAPI.TryGetSingleton<EntitiesComponentData>(out var dt))
             {
-                m_RandomRange = new float4(-dt.m_Row * 0.5f, dt.m_Row * 0.5f, -dt.m_Col * 0.5f, dt.m_Col * 0.5f);
+                //m_RandomRange = new float4(-dt.m_Row * 0.5f, dt.m_Row * 0.5f, -dt.m_Col * 0.5f, dt.m_Col * 0.5f);
+                m_RandomRange = new float4(-dt.m_Row * 50f, dt.m_Row * 50f, -dt.m_Col * 50f, dt.m_Col * 50f);
             }
             else
             {
                 m_RandomRange = new float4(-50, 50, -50, 50);
+                //m_RandomRange = new float4(-dt.m_Row * 50f, dt.m_Row * 50f, -dt.m_Col * 50f, dt.m_Col * 50f);
             }
         }
         void OnDestroy(ref SystemState state)
@@ -84,11 +99,11 @@ public partial struct SpawnEntitiesSystem : ISystem
             m_Random = new Unity.Mathematics.Random((uint)Time.frameCount);
             var entityQuery = SystemAPI.QueryBuilder().WithAll<TargetMovePointData>().Build();
             var tempEntities = entityQuery.ToEntityArray(Allocator.TempJob);
-
+            //Debug.LogError("m_RandomRange = "+ m_RandomRange);
             var moveJob = new MoveEntitiesJob
             {
                 random = m_Random,
-                moveSpeed = SystemAPI.Time.DeltaTime * 4,
+                moveSpeed = SystemAPI.Time.DeltaTime * 10,
                 randomRange = m_RandomRange,
                 entities = tempEntities,
                 entityManager = state.EntityManager,
@@ -146,6 +161,7 @@ public partial struct SpawnEntitiesSystem : ISystem
             float3 moveDir = math.normalize(tPointData.targetPoint - curPoint);
             transform.Rotation = Quaternion.LookRotation(moveDir);
             transform.Position += moveDir * moveSpeed;
+         
             entityWriter.SetComponent(index, entity, transform);
         }
     }
