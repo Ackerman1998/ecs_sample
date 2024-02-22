@@ -52,7 +52,7 @@ public partial struct SpawnEntitiesSystem : ISystem
                         xx = GetPixel.Instance.posList[cc];
                     }
                   
-                    LocalTransform localParam = LocalTransform.FromPosition(new float3(-i * gridSize, 0, -j * gridSize));
+                    LocalTransform localParam = LocalTransform.FromPosition(new float3(-i * gridSize, 0, j * gridSize));
                     localParam.Scale = 1;
                     ecb.SetComponent(entity, localParam);
                     cc++;
@@ -197,7 +197,7 @@ public partial struct SpawnEntitiesSystem : ISystem
 
             float3 moveDir = math.normalize(tPointData.targetPoint - curPoint);
             transform.Rotation = Quaternion.LookRotation(moveDir);
-            transform.Position += moveDir * moveSpeed*3;
+            transform.Position += moveDir * moveSpeed*8;
          
             entityWriter.SetComponent(index, entity, transform);
         }

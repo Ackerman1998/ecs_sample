@@ -72,16 +72,18 @@
     <Analyzer Include="D:\Projects\ecs_sample\ecs_sample\Library\PackageCache\com.unity.entities@1.0.10\Unity.Entities\SourceGenerators\Unity.Entities.SourceGen.JobEntityGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\test\code\test_MainHandler.cs" />
+    <Compile Include="Assets\test\code\EntitiesAuthoring.cs" />
+    <Compile Include="Assets\test\code\GlobalSettings.cs" />
     <Compile Include="Assets\Scripts\SpawnerSystem.cs" />
     <Compile Include="Assets\Scripts\BoxUpdateSystem.cs" />
     <Compile Include="Assets\Scripts\BoxAuthoring.cs" />
     <Compile Include="Assets\Scripts\CollisionGenerator.cs" />
-    <Compile Include="Assets\test\testLauncher.cs" />
-    <Compile Include="Assets\test\code\GameGeneratorSystem.cs" />
+    <Compile Include="Assets\test\code\SpawnEntitiesSystem.cs" />
     <Compile Include="Assets\Scripts\VoxelizerAuthoring.cs" />
     <Compile Include="Assets\Scripts\SpawnerAuthoring.cs" />
-    <Compile Include="Assets\test\code\GameGeneratorAuthoring.cs" />
-    <Compile Include="Assets\test\GlobalSettings.cs" />
+    <Compile Include="Assets\test\code\testLauncher.cs" />
+    <Compile Include="Assets\test\code\GetPixel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -920,12 +922,24 @@
       <HintPath>Library\ScriptAssemblies\Klak.Motion.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.MemoryProfiler">
+      <HintPath>Library\ScriptAssemblies\Unity.MemoryProfiler.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Klak.Motion.Editor">
       <HintPath>Library\ScriptAssemblies\Klak.Motion.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.EditorCoroutines.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.MemoryProfiler.Editor.MemoryProfilerModule">
+      <HintPath>Library\ScriptAssemblies\Unity.MemoryProfiler.Editor.MemoryProfilerModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
@@ -986,6 +1000,10 @@
     </Reference>
     <Reference Include="Unity.Entities.Graphics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Entities.Graphics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.MemoryProfiler.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.MemoryProfiler.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Entities.UI">
