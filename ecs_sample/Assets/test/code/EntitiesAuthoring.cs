@@ -8,6 +8,7 @@ public class EntitiesAuthoring : MonoBehaviour
     public GameObject prefab;
     public int m_Row;
     public int m_Col;
+    public int totalNum;
 }
 
 public class EntitiesAuthoringBaker : Baker<EntitiesAuthoring>
@@ -19,7 +20,8 @@ public class EntitiesAuthoringBaker : Baker<EntitiesAuthoring>
         {
             m_PrefabEntity = GetEntity(authoring.prefab, TransformUsageFlags.Dynamic),
             m_Row = authoring.m_Row,
-            m_Col = authoring.m_Col
+            m_Col = authoring.m_Col,
+            totalNum = authoring.totalNum
         };
         AddComponent(GetEntity(TransformUsageFlags.Dynamic),data);
     }
@@ -28,4 +30,5 @@ public struct EntitiesComponentData : IComponentData {
     public Entity m_PrefabEntity;
     public int m_Row;
     public int m_Col;
+    public int totalNum;
 } 

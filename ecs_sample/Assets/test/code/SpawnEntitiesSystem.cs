@@ -31,22 +31,56 @@ public partial struct SpawnEntitiesSystem : ISystem
         var ecb = ecbSingleton.CreateCommandBuffer(state.WorldUnmanaged);
         foreach (var data in SystemAPI.Query<EntitiesComponentData>())
         {
-            Unity.Mathematics.Random m_Random = new Unity.Mathematics.Random(1);
-            var m_RandomRange = new float4(-data.m_Row * 0.5f, data.m_Row * 0.5f, -data.m_Col * 0.5f, data.m_Col * 0.5f);
-            var halfSize = new float2(data.m_Col * 0.5f, data.m_Row * 0.5f);
-            for (int i = 0; i < data.m_Row; i++)
-            {
-                for (int j = 0; j < data.m_Col; j++)
+            //int size = (int)(Mathf.Sqrt(data.totalNum));
+            int size = (int)(Mathf.Sqrt(GetPixel.Instance.posList.Count));
+            var gridSize =  data.m_Row / size;
+            int cc = 0;
+   
+            for (int i=0;i< size; i++) {
+                for (int j = 0; j < size; j++)
                 {
-    
                     var entity = state.EntityManager.Instantiate(data.m_PrefabEntity);
-                    LocalTransform localParam = LocalTransform.FromPosition(new float3(j - halfSize.x, 0, i - halfSize.y));
-                    localParam.Scale = 0.5f;
+                    //LocalTransform localParam = LocalTransform.FromPosition(new float3(i * gridSize, 0, j * gridSize));
+                    //localParam.Scale = 0.5f;
+                    //ecb.SetComponent(entity, localParam);
+                    int2 xx;
+                    if (cc >= GetPixel.Instance.posList.Count)
+                    {
+                        xx = new int2(0, 0);
+                    }
+                    else {
+                        xx = GetPixel.Instance.posList[cc];
+                    }
+                  
+                    LocalTransform localParam = LocalTransform.FromPosition(new float3(-i * gridSize, 0, -j * gridSize));
+                    localParam.Scale = 1;
                     ecb.SetComponent(entity, localParam);
-                    ecb.AddComponent<TargetMovePointData>(entity, new TargetMovePointData() {
-                        targetPoint = new float3(m_Random.NextFloat(m_RandomRange.x, m_RandomRange.y), 0, m_Random.NextFloat(m_RandomRange.z, m_RandomRange.w)) });
+                    cc++;
+                    ecb.AddComponent<TargetMovePointData>(entity, new TargetMovePointData()
+                    {
+                        //targetPoint = new float3(0, 0, 0)
+                        targetPoint = new float3(xx.x, 0, xx.y)
+                    });
                 }
             }
+            //Unity.Mathematics.Random m_Random = new Unity.Mathematics.Random(1);
+            //var m_RandomRange = new float4(-data.m_Row * 0.5f, data.m_Row * 0.5f, -data.m_Col * 0.5f, data.m_Col * 0.5f);
+            //var halfSize = new float2(data.m_Col * 0.5f, data.m_Row * 0.5f);
+            //for (int i = 0; i < data.m_Row; i++)
+            //{
+            //    for (int j = 0; j < data.m_Col; j++)
+            //    {
+
+            //        var entity = state.EntityManager.Instantiate(data.m_PrefabEntity);
+            //        LocalTransform localParam = LocalTransform.FromPosition(new float3(j - halfSize.x, 0, i - halfSize.y));
+            //        localParam.Scale = 0.5f;
+            //        ecb.SetComponent(entity, localParam);
+            //        ecb.AddComponent<TargetMovePointData>(entity, new TargetMovePointData()
+            //        {
+            //            targetPoint = new float3(m_Random.NextFloat(m_RandomRange.x, m_RandomRange.y), 0, m_Random.NextFloat(m_RandomRange.z, m_RandomRange.w))
+            //        });
+            //    }
+            //}
             state.Enabled = false;
         }
     }
@@ -154,13 +188,16 @@ public partial struct SpawnEntitiesSystem : ISystem
             var offset = tPoint - curPoint;
             if (math.lengthsq(offset) < 0.4f)
             {
+                return;
                 tPointData.targetPoint = new float3(random.NextFloat(randomRange.x, randomRange.y), 0, random.NextFloat(randomRange.z, randomRange.w));
+                //tPointData.targetPoint = tPoint;
                 entityWriter.SetComponent(index, entity, tPointData);
+                //return;
             }
 
             float3 moveDir = math.normalize(tPointData.targetPoint - curPoint);
             transform.Rotation = Quaternion.LookRotation(moveDir);
-            transform.Position += moveDir * moveSpeed;
+            transform.Position += moveDir * moveSpeed*3;
          
             entityWriter.SetComponent(index, entity, transform);
         }
