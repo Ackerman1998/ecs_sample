@@ -25,6 +25,16 @@ public partial struct SpawnEntitiesSystem : ISystem
     //        cx.ValueRW.Position = new float3(UnityEngine.Random.Range(0, 10), UnityEngine.Random.Range(0, 10), 0);
     //    }
     //}
+    public void testCreate() {
+        //EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        //var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
+        //var ecb = ecbSingleton.CreateCommandBuffer(entityManager.WorldUnmanaged);
+        //EntitiesComponentData entitiesComponentData = entityManager.GetComponentData<EntitiesComponentData>(entity);
+        //var ee = entityManager.Instantiate(entitiesComponentData.m_PrefabEntity);
+        //LocalTransform localParam = LocalTransform.FromPosition(new float3(1, 0, 1));
+        //localParam.Scale = 1;
+        //ecb.SetComponent(ee, localParam);
+    }
     void OnUpdate(ref SystemState state)
     {
         var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
@@ -36,33 +46,34 @@ public partial struct SpawnEntitiesSystem : ISystem
             var gridSize =  data.m_Row / size;
             int cc = 0;
    
-            for (int i=0;i< size; i++) {
-                for (int j = 0; j < size; j++)
-                {
-                    var entity = state.EntityManager.Instantiate(data.m_PrefabEntity);
-                    //LocalTransform localParam = LocalTransform.FromPosition(new float3(i * gridSize, 0, j * gridSize));
-                    //localParam.Scale = 0.5f;
-                    //ecb.SetComponent(entity, localParam);
-                    int2 xx;
-                    if (cc >= GetPixel.Instance.posList.Count)
-                    {
-                        xx = new int2(0, 0);
-                    }
-                    else {
-                        xx = GetPixel.Instance.posList[cc];
-                    }
+            //for (int i=0;i< size; i++) {
+            //    for (int j = 0; j < size; j++)
+            //    {
+            //        var entity = state.EntityManager.Instantiate(data.m_PrefabEntity);
+            //        //LocalTransform localParam = LocalTransform.FromPosition(new float3(i * gridSize, 0, j * gridSize));
+            //        //localParam.Scale = 0.5f;
+            //        //ecb.SetComponent(entity, localParam);
+            //        int2 xx;
+            //        if (cc >= GetPixel.Instance.posList.Count)
+            //        {
+            //            xx = new int2(0, 0);
+            //        }
+            //        else {
+            //            xx = GetPixel.Instance.posList[cc];
+            //        }
                   
-                    LocalTransform localParam = LocalTransform.FromPosition(new float3(-i * gridSize, 0, j * gridSize));
-                    localParam.Scale = 1;
-                    ecb.SetComponent(entity, localParam);
-                    cc++;
-                    ecb.AddComponent<TargetMovePointData>(entity, new TargetMovePointData()
-                    {
-                        //targetPoint = new float3(0, 0, 0)
-                        targetPoint = new float3(xx.x, 0, xx.y)
-                    });
-                }
-            }
+            //        LocalTransform localParam = LocalTransform.FromPosition(new float3(-i * gridSize, 0, j * gridSize));
+            //        localParam.Scale = 1;
+            //        ecb.SetComponent(entity, localParam);
+            //        cc++;
+            //        ecb.AddComponent<TargetMovePointData>(entity, new TargetMovePointData()
+            //        {
+            //            //targetPoint = new float3(0, 0, 0)
+            //            targetPoint = new float3(xx.x, 0, xx.y)
+            //        });
+            //    }
+            //}
+
             //Unity.Mathematics.Random m_Random = new Unity.Mathematics.Random(1);
             //var m_RandomRange = new float4(-data.m_Row * 0.5f, data.m_Row * 0.5f, -data.m_Col * 0.5f, data.m_Col * 0.5f);
             //var halfSize = new float2(data.m_Col * 0.5f, data.m_Row * 0.5f);

@@ -1,21 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Rendering;
+using Unity.Transforms;
 
 public class test_MainHandler : MonoBehaviour
 {
     EntityArchetype tempAchetype;
     private Entity swordEntity;
+    EntityManager entityManager;
+    public Text numTotal;
     private void Awake()
     {
-        
- //       tempAchetype = _manager.CreateArchetype(
- //typeof(Translation),
- //typeof(Target)
- //);
+         entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
+        //       tempAchetype = _manager.CreateArchetype(
+        //typeof(Translation),
+        //typeof(Target)
+        //);
+    }
+    private void Update()
+    {
+        numTotal.text = entityManager.GetAllEntities().Length.ToString();
+        if (Input.GetKeyDown(KeyCode.W)) {
+            //var archetype = entityManager.CreateArchetype(
+            //   typeof(LocalToWorld),
+            //   typeof(Translation),
+            //   typeof(RenderMesh),
+            //   typeof(RenderBounds));
+            //var entity = entityManager.CreateEntity(archetype);
+            //entityManager.SetComponentData(entity, new Translation
+            //{
+            //    Value = new float3(0, 100, 0)
+            //});
+
+
+            //EntitiesComponentData entitiesComponentData = entityManager.GetComponentData<EntitiesComponentData>(entity);
+            //var ee = entityManager.Instantiate(entitiesComponentData.m_PrefabEntity);
+            //LocalTransform localParam = LocalTransform.FromPosition(new float3(1, 0, 1));
+            //localParam.Scale = 1;
+            //entityManager.SetComponentData(ee, localParam);
+           // SpawnEntitiesSystem spawnEntitiesSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystem<SpawnEntitiesSystem>();
+
+        }
     }
     //private void Update()
     //{
