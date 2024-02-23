@@ -10,9 +10,7 @@ public class GetPixel : MonoBehaviour
 
     [Header("Drawing")]
 
-    //Ω£’Û√‹∂»
     public int drawDensity;
-    //Ω£’Û¿Î…¢≥Ã∂»
     public int disperseMin;
     public static GetPixel Instance;
     //Õº∆¨øÌ∏ﬂ

@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5527509837097727590, guid: 30c36733c8bb91c43b41361847e1db5e, type: 3}
-  m_Row: 300
-  m_Col: 300
+  m_Row: 1200
+  m_Col: 1200
   totalNum: 19876
 --- !u!4 &1098658476
 Transform:
