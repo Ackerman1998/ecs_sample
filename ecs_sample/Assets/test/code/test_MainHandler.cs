@@ -44,7 +44,14 @@ public class test_MainHandler : MonoBehaviour
             //LocalTransform localParam = LocalTransform.FromPosition(new float3(1, 0, 1));
             //localParam.Scale = 1;
             //entityManager.SetComponentData(ee, localParam);
-           // SpawnEntitiesSystem spawnEntitiesSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystem<SpawnEntitiesSystem>();
+            // SpawnEntitiesSystem spawnEntitiesSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystem<SpawnEntitiesSystem>();
+            SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<SpawnEntitiesSystem>();
+            SpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<SpawnEntitiesSystem>(ssh);
+            for (int i=1;i<100;i++) {
+                for (int j=1;j<100;j++) {
+                    spawnEntitiesSystem.testCreate(i,j);
+                }
+            }
 
         }
     }

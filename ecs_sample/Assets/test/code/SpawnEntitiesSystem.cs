@@ -25,15 +25,18 @@ public partial struct SpawnEntitiesSystem : ISystem
     //        cx.ValueRW.Position = new float3(UnityEngine.Random.Range(0, 10), UnityEngine.Random.Range(0, 10), 0);
     //    }
     //}
-    public void testCreate() {
-        //EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        //var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
-        //var ecb = ecbSingleton.CreateCommandBuffer(entityManager.WorldUnmanaged);
-        //EntitiesComponentData entitiesComponentData = entityManager.GetComponentData<EntitiesComponentData>(entity);
-        //var ee = entityManager.Instantiate(entitiesComponentData.m_PrefabEntity);
-        //LocalTransform localParam = LocalTransform.FromPosition(new float3(1, 0, 1));
-        //localParam.Scale = 1;
-        //ecb.SetComponent(ee, localParam);
+    public void testCreate(int x ,int y) {
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
+        var ecb = ecbSingleton.CreateCommandBuffer(entityManager.WorldUnmanaged);
+        EntitiesComponentData data = SystemAPI.GetSingleton<EntitiesComponentData>();
+        var ee = entityManager.Instantiate(data.m_PrefabEntity);
+        LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 0, y));
+        localParam.Scale = 0.5f;
+        ecb.SetComponent(ee, localParam);
+        //if (x==20) {
+        //    entityManager.SetEnabled(ee,false);
+        //}
     }
     void OnUpdate(ref SystemState state)
     {
