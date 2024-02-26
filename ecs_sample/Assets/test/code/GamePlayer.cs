@@ -98,12 +98,23 @@ public class GamePlayer : MonoBehaviour
             GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
             var transform = entityManager.GetComponentData<LocalTransform>(entity);
             float3 curPoint = transform.Position;
-            spawnEntitiesSystem.CreateBullet(curPoint.x, curPoint.z);
+            //spawnEntitiesSystem.CreateBullet(curPoint.x, curPoint.z);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,1,0);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,-1,0);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,0,1);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,0,-1);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,0.5f,0.5f);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,-0.5f,0.5f);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,0.5f,-0.5f);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,-0.5f,-0.5f);
         }
         genNpcTimeCurrent += Time.deltaTime;
         if (genNpcTimeCurrent >= genNpcTimeSpan)
         {
             genNpcTimeCurrent = 0f;
+            CreateNpc();
+            CreateNpc();
+            CreateNpc();
             CreateNpc();
         }
     }

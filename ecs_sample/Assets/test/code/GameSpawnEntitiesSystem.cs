@@ -80,11 +80,37 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         ecb.SetComponent(ee, localParam);
         ecb.AddComponent<PlayerBulletData>(ee, new PlayerBulletData()
         {
-            timeLife = 1f,
+            timeLife = 2f,
             currentLife = 0f,
             direction = new float3(_x, 0, _z),
             isStart = true
         }) ;
+        return ee;
+    }
+    public Entity CreateBulletDirection(float x, float y,float bul_x,float bul_y)
+    {
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
+        var ecb = ecbSingleton.CreateCommandBuffer(entityManager.WorldUnmanaged);
+        GameEntitiesComponentData data = SystemAPI.GetSingleton<GameEntitiesComponentData>();
+        var ee = entityManager.Instantiate(data.m_BulletPrefabEntity);
+        //float _x = GamePlayer._instance.uIJoyist.directionTempVec.x;
+        //float _z = GamePlayer._instance.uIJoyist.directionTempVec.y;
+        //if (_x == 0 && _z == 0)
+        //{
+        //    _x = 0;
+        //    _z = 1;
+        //}
+        LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 1, y));
+        localParam.Scale = 0.8f;
+        ecb.SetComponent(ee, localParam);
+        ecb.AddComponent<PlayerBulletData>(ee, new PlayerBulletData()
+        {
+            timeLife = 1f,
+            currentLife = 0f,
+            direction = new float3(bul_x, 0, bul_y),
+            isStart = true
+        });
         return ee;
     }
 
@@ -245,7 +271,7 @@ public partial struct GameSpawnEntitiesSystem : ISystem
             float3 curPoint = transform.Position;
             var offset = direction;
             transform.Rotation = Quaternion.LookRotation(offset);
-            transform.Position += offset * moveSpeed * 2;
+            transform.Position += offset * moveSpeed * 4;
             entityWriter.SetComponent(index, entity, transform);
         }
     }
