@@ -76,7 +76,7 @@ public partial struct GameSpawnEntitiesSystem : ISystem
             _z = 1;
         }
         LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 1, y));
-        localParam.Scale = 0.33f;
+        localParam.Scale = 0.8f;
         ecb.SetComponent(ee, localParam);
         ecb.AddComponent<PlayerBulletData>(ee, new PlayerBulletData()
         {

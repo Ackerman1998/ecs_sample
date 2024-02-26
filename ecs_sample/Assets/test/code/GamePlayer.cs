@@ -28,40 +28,46 @@ public class GamePlayer : MonoBehaviour
     {
         uIJoyist = GameObject.Find("Canvas/Joystick").GetComponent<UIJoyist>();
     }
-
+    public void StartLaunch() {
+        if (entityIsCreate==false) {
+            CreateScene();
+            CreatePlayer();
+        }
+    }
     public void Init()
     {
-  
+      
+    }
+    private void CreatePlayer() {
+        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
+        GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
+        entity = spawnEntitiesSystem.CreateInstance(0, 0);
+        entityIsCreate = true;
+    }
+    private void CreateScene()
+    {
+        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
+        GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
+        spawnEntitiesSystem.CreateScene(0, 0);
+    }
+    private void CreateBullet() {
+
+    }
+    private void CreateNpc()
+    {
+        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
+        GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
+        spawnEntitiesSystem.CreateNpc(2, 2);
     }
     public void RecycleBullet(Entity entity) {
-        Debug.Log("»ØÊÕ×Óµ¯£º"+ entity.Index);
         bullets.Add(entity);
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-            SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
-            GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
-            entity = spawnEntitiesSystem.CreateInstance(0, 0);
-            entityIsCreate = true;
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-            SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
-            GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
-            spawnEntitiesSystem.CreateNpc(2, 2);
-        } 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-            SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
-            GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
-            spawnEntitiesSystem.CreateScene(0, 0);
-        }
         if (entityIsCreate==false) {
             return;
         }
