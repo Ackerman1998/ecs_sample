@@ -17,7 +17,9 @@ public class GamePlayer : MonoBehaviour
     public UIJoyist uIJoyist;
     private List<Entity> bullets = new List<Entity>();
     float shootTimeSpan = 0.2f;
+    float genNpcTimeSpan = 0.1f;
     float shootTimeCurrent =0;
+    float genNpcTimeCurrent = 0;
     private void Awake()
     {
         _instance = this;
@@ -30,6 +32,7 @@ public class GamePlayer : MonoBehaviour
     }
     public void StartLaunch() {
         if (entityIsCreate==false) {
+            GameObject.Find("Canvas/START").gameObject.SetActive(false);
             CreateScene();
             CreatePlayer();
         }
@@ -60,7 +63,12 @@ public class GamePlayer : MonoBehaviour
         entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
         GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
-        spawnEntitiesSystem.CreateNpc(2, 2);
+        spawnEntitiesSystem.CreateNpc(GetRandomNumByRange(4,20), GetRandomNumByRange(4, 20));
+    }
+    private int GetRandomNumByRange(int min,int max) {
+        int direction = UnityEngine.Random.Range(0, 2) == 1 ? 1 : -1;
+        int rr = UnityEngine.Random.Range(min, max+1)* direction;
+        return rr;
     }
     public void RecycleBullet(Entity entity) {
         bullets.Add(entity);
@@ -68,10 +76,12 @@ public class GamePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (entityIsCreate==false) {
+        if (entityIsCreate == false)
+        {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.M)) {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
             entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
             GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
@@ -80,7 +90,8 @@ public class GamePlayer : MonoBehaviour
             spawnEntitiesSystem.CreateBullet(curPoint.x, curPoint.z);
         }
         shootTimeCurrent += Time.deltaTime;
-        if (shootTimeCurrent>=shootTimeSpan) {
+        if (shootTimeCurrent >= shootTimeSpan)
+        {
             shootTimeCurrent = 0f;
             entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
@@ -88,25 +99,12 @@ public class GamePlayer : MonoBehaviour
             var transform = entityManager.GetComponentData<LocalTransform>(entity);
             float3 curPoint = transform.Position;
             spawnEntitiesSystem.CreateBullet(curPoint.x, curPoint.z);
-            //bullets.Add();
-            //for (int i=0;i< bullets.Count;i++)
-            //{
-            //    EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-            //    if (entityManager.GetComponentData<PlayerBulletData>(bullets[i]).isStart==false) {
-            //        entityManager.SetEnabled(bullets[i],false);
-            //    }
-            //}
         }
-       
-        //print(Input.GetAxis("Horizontal"));
-        //if (Input.GetAxis("Horizontal")!=0) {
-        //    var transform = entityManager.GetComponentData<LocalTransform>(entity);
-        //    transform.Position += new Unity.Mathematics.float3(0,0, Input.GetAxis("Horizontal")) * Time.deltaTime * 8;
-        //}
-        //if (Input.GetAxis("Vertical") != 0)
-        //{
-        //    var transform = entityManager.GetComponentData<LocalTransform>(entity);
-        //    transform.Position += new Unity.Mathematics.float3(Input.GetAxis("Vertical"), 0,0) * Time.deltaTime * 8;
-        //}
+        genNpcTimeCurrent += Time.deltaTime;
+        if (genNpcTimeCurrent >= genNpcTimeSpan)
+        {
+            genNpcTimeCurrent = 0f;
+            CreateNpc();
+        }
     }
 }
