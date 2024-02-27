@@ -28,7 +28,7 @@ public class GamePlayer : MonoBehaviour
     {
         _instance = this;
         entityIsCreate = false;
-        Application.targetFrameRate = 120;
+        Application.targetFrameRate = 60;
     }
     // Start is called before the first frame update
     void Start()
