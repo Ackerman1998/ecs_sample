@@ -43,7 +43,7 @@ public partial struct BulletTriggerSystem : ISystem
                     GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
                     var transform = entityManager.GetComponentData<LocalTransform>(entity);
                     float3 curPoint = transform.Position;
-                  //  spawnEntitiesSystem.CreateEffBoom(curPoint.x, curPoint.z);
+                    spawnEntitiesSystem.CreateEffBoom(curPoint.x, curPoint.z);
                     ecb.DestroyEntity(otherEntity);
                     ecb.DestroyEntity(entity);
                 }

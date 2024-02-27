@@ -39,6 +39,46 @@ public partial struct SpawnEntitiesSystem : ISystem
         //    entityManager.SetEnabled(ee,false);
         //}
     }
+    public void Create()
+    {
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
+        var ecb = ecbSingleton.CreateCommandBuffer(entityManager.WorldUnmanaged);
+        EntitiesComponentData data = SystemAPI.GetSingleton<EntitiesComponentData>();
+        var ee = entityManager.Instantiate(data.m_PrefabEntity);
+        int size = (int)(Mathf.Sqrt(GetPixel.Instance.posList.Count));
+        var gridSize = data.m_Row / size;
+        int cc = 0;
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                var entity = entityManager.Instantiate(data.m_PrefabEntity);
+                //LocalTransform localParam = LocalTransform.FromPosition(new float3(i * gridSize, 0, j * gridSize));
+                //localParam.Scale = 0.5f;
+                //ecb.SetComponent(entity, localParam);
+                int2 xx;
+                if (cc >= GetPixel.Instance.posList.Count)
+                {
+                    xx = new int2(0, 0);
+                }
+                else
+                {
+                    xx = GetPixel.Instance.posList[cc];
+                }
+
+                LocalTransform localParam = LocalTransform.FromPosition(new float3(-i * gridSize, 0, j * gridSize));
+                localParam.Scale = 1;
+                ecb.SetComponent(entity, localParam);
+                cc++;
+                ecb.AddComponent<TargetMovePointData>(entity, new TargetMovePointData()
+                {
+                    //targetPoint = new float3(0, 0, 0)
+                    targetPoint = new float3(xx.x, 0, xx.y)
+                });
+            }
+        }
+    }
     void OnUpdate(ref SystemState state)
     {
         var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();

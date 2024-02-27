@@ -17,11 +17,18 @@ public class test_MainHandler : MonoBehaviour
     private void Awake()
     {
          entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-
+             
         //       tempAchetype = _manager.CreateArchetype(
         //typeof(Translation),
         //typeof(Target)
         //);
+    }
+    public void ButtonStart() {
+        GameObject.Find("Canvas/START").gameObject.SetActive(false);
+        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<SpawnEntitiesSystem>();
+        SpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<SpawnEntitiesSystem>(ssh);
+        spawnEntitiesSystem.Create();
     }
     private void Update()
     {

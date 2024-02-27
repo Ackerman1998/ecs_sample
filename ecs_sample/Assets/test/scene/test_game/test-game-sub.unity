@@ -171,4 +171,4 @@ MonoBehaviour:
   npc: {fileID: 3414761862050206358, guid: 462de77d47ba5a742ad7155f6ec08392, type: 3}
   bullet: {fileID: 3936063760698274956, guid: 8a49dd75d44cf0049a0ffe8ab24980bd, type: 3}
   scene: {fileID: 8907705488032738410, guid: f0352eefed959f74c8b6464af85b3c0f, type: 3}
-  effect_Boom: {fileID: 6529976222860959824, guid: dfd27d75892a3bc4e9e793fc1127a27d, type: 3}
+  effect_Boom: {fileID: 6529976222860959824, guid: 1e97cf1d878d72b4b9ffde03fcc7d7e3, type: 3}

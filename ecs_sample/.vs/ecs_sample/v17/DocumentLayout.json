@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|d:\\ackerman\\gproject\\ecs_sample\\ecs_sample\\assets\\test\\code\\changecollidersystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\changecollidersystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\spawnentitiessystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\spawnentitiessystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|d:\\ackerman\\gproject\\ecs_sample\\ecs_sample\\assets\\test\\code\\gamespawnentitiessystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|d:\\ackerman\\gproject\\ecs_sample\\ecs_sample\\assets\\test\\code\\test_mainhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\test_mainhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\gamespawnentitiessystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\gamespawnentitiessystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,12 +19,20 @@
       "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\gameplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\gameentitiesauthoring.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\gameentitiesauthoring.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\changecollidersystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\changecollidersystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\spawnentitiessystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\spawnentitiessystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\fpsupdater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\fpsupdater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\physics\\bullettriggersystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\physics\\bullettriggersystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\gameentitiesauthoring.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\gameentitiesauthoring.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\entitiesauthoring.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\globalsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\globalsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\test_mainhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\code\\test_mainhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5B6E52D6-AD56-0429-9138-6BEECDED5604}|Assembly-CSharp.csproj|D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\assets\\test\\code\\testlauncher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -71,6 +79,48 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SpawnEntitiesSystem.cs",
+              "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\SpawnEntitiesSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\test\\code\\SpawnEntitiesSystem.cs",
+              "ToolTip": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\SpawnEntitiesSystem.cs",
+              "RelativeToolTip": "Assets\\test\\code\\SpawnEntitiesSystem.cs",
+              "ViewState": "AQIAAFEAAAAAAAAAAAA5wHgAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T17:36:11.521Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GameSpawnEntitiesSystem.cs",
+              "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\GameSpawnEntitiesSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\test\\code\\GameSpawnEntitiesSystem.cs",
+              "ToolTip": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\GameSpawnEntitiesSystem.cs",
+              "RelativeToolTip": "Assets\\test\\code\\GameSpawnEntitiesSystem.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACAAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-25T15:07:30.232Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "test_MainHandler.cs",
+              "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\test_MainHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\test\\code\\test_MainHandler.cs",
+              "ToolTip": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\test_MainHandler.cs",
+              "RelativeToolTip": "Assets\\test\\code\\test_MainHandler.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAB4AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T09:18:07.55Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ChangeColliderSystem.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\ChangeColliderSystem.cs",
               "RelativeDocumentMoniker": "Assets\\test\\code\\ChangeColliderSystem.cs",
@@ -83,44 +133,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "GamePlayer.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\GamePlayer.cs",
               "RelativeDocumentMoniker": "Assets\\test\\code\\GamePlayer.cs",
               "ToolTip": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\GamePlayer.cs",
               "RelativeToolTip": "Assets\\test\\code\\GamePlayer.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAAwDcAAAApAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAADwvykAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-25T15:19:24.366Z"
+              "WhenOpened": "2024-02-25T15:19:24.366Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "GameEntitiesAuthoring.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\GameEntitiesAuthoring.cs",
               "RelativeDocumentMoniker": "Assets\\test\\code\\GameEntitiesAuthoring.cs",
               "ToolTip": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\GameEntitiesAuthoring.cs",
               "RelativeToolTip": "Assets\\test\\code\\GameEntitiesAuthoring.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAxwB4AAAAhAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAwwB4AAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-25T15:18:21.703Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GameSpawnEntitiesSystem.cs",
-              "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\GameSpawnEntitiesSystem.cs",
-              "RelativeDocumentMoniker": "Assets\\test\\code\\GameSpawnEntitiesSystem.cs",
-              "ToolTip": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\GameSpawnEntitiesSystem.cs",
-              "RelativeToolTip": "Assets\\test\\code\\GameSpawnEntitiesSystem.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAgwDoAAABPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-25T15:07:30.232Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "PhysicalSystem.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\PhysicalSystem.cs",
               "RelativeDocumentMoniker": "Assets\\test\\code\\PhysicalSystem.cs",
@@ -132,7 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "UIJoyist.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\UIJoyist.cs",
               "RelativeDocumentMoniker": "Assets\\test\\code\\UIJoyist.cs",
@@ -144,7 +182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "testLauncher.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\testLauncher.cs",
               "RelativeDocumentMoniker": "Assets\\test\\code\\testLauncher.cs",
@@ -156,19 +194,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "test_MainHandler.cs",
-              "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\test_MainHandler.cs",
-              "RelativeDocumentMoniker": "Assets\\test\\code\\test_MainHandler.cs",
-              "ToolTip": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\test_MainHandler.cs",
-              "RelativeToolTip": "Assets\\test\\code\\test_MainHandler.cs",
-              "ViewState": "AQIAAGIAAAAAAAAAAAAIwHwAAAAxAAAA",
+              "DocumentIndex": 6,
+              "Title": "BulletTriggerSystem.cs",
+              "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\Physics\\BulletTriggerSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\test\\code\\Physics\\BulletTriggerSystem.cs",
+              "ToolTip": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\Physics\\BulletTriggerSystem.cs",
+              "RelativeToolTip": "Assets\\test\\code\\Physics\\BulletTriggerSystem.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAIwC0AAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-24T09:18:07.55Z"
+              "WhenOpened": "2024-02-27T14:17:35.548Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
+              "Title": "FpsUpdater.cs",
+              "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\FpsUpdater.cs",
+              "RelativeDocumentMoniker": "Assets\\test\\code\\FpsUpdater.cs",
+              "ToolTip": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\FpsUpdater.cs",
+              "RelativeToolTip": "Assets\\test\\code\\FpsUpdater.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-27T15:05:45.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "GlobalSettings.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\GlobalSettings.cs",
               "RelativeDocumentMoniker": "Assets\\test\\code\\GlobalSettings.cs",
@@ -180,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "GetPixel.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\GetPixel.cs",
               "RelativeDocumentMoniker": "Assets\\test\\code\\GetPixel.cs",
@@ -192,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "EntitiesAuthoring.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\EntitiesAuthoring.cs",
               "RelativeDocumentMoniker": "Assets\\test\\code\\EntitiesAuthoring.cs",
@@ -204,19 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SpawnEntitiesSystem.cs",
-              "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\SpawnEntitiesSystem.cs",
-              "RelativeDocumentMoniker": "Assets\\test\\code\\SpawnEntitiesSystem.cs",
-              "ToolTip": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\SpawnEntitiesSystem.cs",
-              "RelativeToolTip": "Assets\\test\\code\\SpawnEntitiesSystem.cs",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAYwMMAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-23T17:36:11.521Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "TSingleton.Base.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\test\\code\\TSingleton.Base.cs",
               "RelativeDocumentMoniker": "Assets\\test\\code\\TSingleton.Base.cs",
@@ -228,7 +266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "PhysicsBodyAuthoring.cs",
               "DocumentMoniker": "D:\\Ackerman\\GProject\\ecs_sample\\ecs_sample\\Assets\\Samples\\Unity Physics\\1.0.10\\Custom Physics Authoring\\Unity.Physics.Custom\\Bodies\\PhysicsBodyAuthoring.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Unity Physics\\1.0.10\\Custom Physics Authoring\\Unity.Physics.Custom\\Bodies\\PhysicsBodyAuthoring.cs",
