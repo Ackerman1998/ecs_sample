@@ -6,24 +6,29 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class GamePlayer : MonoBehaviour
 {
     public static GamePlayer _instance;
     EntityManager entityManager;
-    Entity entity;
+    public Entity entity;
     bool entityIsCreate = false;
     public UIJoyist uIJoyist;
     private List<Entity> bullets = new List<Entity>();
-    float shootTimeSpan = 0.2f;
+    float shootTimeSpan = 0.1f;
     float genNpcTimeSpan = 0.1f;
     float shootTimeCurrent =0;
     float genNpcTimeCurrent = 0;
+    public Camera targetCam;
+    private Vector3 distance;
+    public Text totalNum;
     private void Awake()
     {
         _instance = this;
         entityIsCreate = false;
+        Application.targetFrameRate = 120;
     }
     // Start is called before the first frame update
     void Start()
@@ -47,6 +52,9 @@ public class GamePlayer : MonoBehaviour
         GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
         entity = spawnEntitiesSystem.CreateInstance(0, 0);
         entityIsCreate = true;
+        var transform = entityManager.GetComponentData<LocalTransform>(entity);
+        float3 curPoint = transform.Position;
+        distance =targetCam.transform.position - new Vector3(curPoint.x, curPoint.y, curPoint.z) ;
     }
     private void CreateScene()
     {
@@ -63,7 +71,18 @@ public class GamePlayer : MonoBehaviour
         entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
         GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
-        spawnEntitiesSystem.CreateNpc(GetRandomNumByRange(4,20), GetRandomNumByRange(4, 20));
+        int direction = UnityEngine.Random.Range(0, 2) == 1 ? 1 : -1;
+        var transform = entityManager.GetComponentData<LocalTransform>(entity);
+        float3 curPoint = transform.Position;
+        if (direction == 1)
+        {
+
+            spawnEntitiesSystem.CreateNpc(curPoint.x+GetRandomNumByRange(30, 70), curPoint.z + GetRandomNumByRange(0, 70));
+        }
+        else {
+            spawnEntitiesSystem.CreateNpc(curPoint.x + GetRandomNumByRange(0, 70), curPoint.z + GetRandomNumByRange(30, 70));
+        }
+  
     }
     private int GetRandomNumByRange(int min,int max) {
         int direction = UnityEngine.Random.Range(0, 2) == 1 ? 1 : -1;
@@ -80,6 +99,7 @@ public class GamePlayer : MonoBehaviour
         {
             return;
         }
+        totalNum.text = entityManager.GetAllEntities().Length.ToString();
         if (Input.GetKeyDown(KeyCode.M))
         {
             entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
@@ -98,15 +118,19 @@ public class GamePlayer : MonoBehaviour
             GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
             var transform = entityManager.GetComponentData<LocalTransform>(entity);
             float3 curPoint = transform.Position;
-            //spawnEntitiesSystem.CreateBullet(curPoint.x, curPoint.z);
-            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,1,0);
-            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,-1,0);
-            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,0,1);
-            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,0,-1);
-            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,0.5f,0.5f);
-            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,-0.5f,0.5f);
-            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,0.5f,-0.5f);
-            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z,-0.5f,-0.5f);
+            spawnEntitiesSystem.CreateBullet(curPoint.x, curPoint.z);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z, 1, 0);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z, -1, 0);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z, 0, 1);
+            spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z, 0, -1);
+            CreateBulletBySystem(curPoint, 0.5f, 0.5f);
+            int ee = UnityEngine.Random.Range(1, 100);
+            int ff = 100 - ee;
+            float numX = (float)ee / 100f;
+            float numYY = (float)ff / 100f;
+            CreateBulletBySystem(curPoint, numX, numYY);
+            CreateBulletBySystem(curPoint, numYY, numX);
+
         }
         genNpcTimeCurrent += Time.deltaTime;
         if (genNpcTimeCurrent >= genNpcTimeSpan)
@@ -116,6 +140,32 @@ public class GamePlayer : MonoBehaviour
             CreateNpc();
             CreateNpc();
             CreateNpc();
+            CreateNpc();
+            CreateNpc();
+            CreateNpc();
+            CreateNpc();
+            CreateNpc();
+            CreateNpc();
+            CreateNpc();
+            CreateNpc();
+            CreateNpc();
+            CreateNpc();
+            //CreateNpc();
+            //CreateNpc();
         }
+        if (targetCam) {
+            var transform = entityManager.GetComponentData<LocalTransform>(entity);
+            float3 curPoint = transform.Position;
+            targetCam.transform.position = new Vector3(curPoint.x, curPoint.y, curPoint.z) + distance;
+        }
+    }
+    private void CreateBulletBySystem(float3 curPoint,float x,float y) {
+        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
+        GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
+        spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z, x, y);
+        spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z, -x, y);
+        spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z, x, -y);
+        spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z, -x, -y);
     }
 }

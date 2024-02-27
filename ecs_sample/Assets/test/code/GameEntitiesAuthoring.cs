@@ -10,6 +10,7 @@ public class GameEntitiesAuthoring : MonoBehaviour
     public GameObject npc;
     public GameObject bullet;
     public GameObject scene;
+    public GameObject effect_Boom;
 }
 public class GameEntitiesAuthoringBaker : Baker<GameEntitiesAuthoring>
 {
@@ -22,6 +23,7 @@ public class GameEntitiesAuthoringBaker : Baker<GameEntitiesAuthoring>
             m_BulletPrefabEntity = GetEntity(authoring.bullet, TransformUsageFlags.Dynamic),
             m_NpcPrefabEntity = GetEntity(authoring.npc, TransformUsageFlags.Dynamic),
             m_ScenePrefabEntity = GetEntity(authoring.scene, TransformUsageFlags.Dynamic),
+            m_EffectBoomPrefabEntity = GetEntity(authoring.effect_Boom, TransformUsageFlags.Dynamic),
         };
         AddComponent(GetEntity(TransformUsageFlags.Dynamic), data);
     }
@@ -32,6 +34,7 @@ public struct GameEntitiesComponentData : IComponentData
     public Entity m_BulletPrefabEntity;
     public Entity m_NpcPrefabEntity;
     public Entity m_ScenePrefabEntity;
+    public Entity m_EffectBoomPrefabEntity;
 }
 struct PlayerBulletData : IComponentData
 {
@@ -39,6 +42,7 @@ struct PlayerBulletData : IComponentData
     public float currentLife;
     public float3 direction;
     public bool isStart;
+    public bool isStatic;
 }
 struct RecycleBulletData : IComponentData {
     public bool isRecycle;

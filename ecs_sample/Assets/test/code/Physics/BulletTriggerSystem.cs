@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Assertions;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Physics.Stateful;
 using Unity.Physics.Systems;
+using Unity.Transforms;
 using UnityEngine;
 [UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateAfter(typeof(StatefulTriggerEventSystem))]
@@ -36,6 +38,12 @@ public partial struct BulletTriggerSystem : ISystem
                 }
                 if (triggerEvent.State == StatefulEventState.Enter)
                 {
+                    EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+                    SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
+                    GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
+                    var transform = entityManager.GetComponentData<LocalTransform>(entity);
+                    float3 curPoint = transform.Position;
+                    spawnEntitiesSystem.CreateEffBoom(curPoint.x, curPoint.z);
                     ecb.DestroyEntity(otherEntity);
                     ecb.DestroyEntity(entity);
                 }

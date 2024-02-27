@@ -8,8 +8,8 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
-using static Unity.Entities.EntitiesJournaling;
-using static UnityEngine.EventSystems.EventTrigger;
+//using static Unity.Entities.EntitiesJournaling;
+//using static UnityEngine.EventSystems.EventTrigger;
 [BurstCompile(CompileSynchronously = true)]
 public partial struct GameSpawnEntitiesSystem : ISystem
 {
@@ -36,7 +36,7 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         }); ;
         return ee;
     }
-    public Entity CreateNpc(int x, int y)
+    public Entity CreateNpc(float x, float y)
     {
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
@@ -46,7 +46,11 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 2, y));
         localParam.Scale = 1f;
         ecb.SetComponent(ee, localParam);
-  
+      
+        ecb.AddComponent<NpcMoveData>(ee, new NpcMoveData()
+        {
+            targetEntity = GamePlayer._instance.entity
+        });
         return ee;
     }
     public Entity CreateScene(int x, int y)
@@ -83,7 +87,8 @@ public partial struct GameSpawnEntitiesSystem : ISystem
             timeLife = 2f,
             currentLife = 0f,
             direction = new float3(_x, 0, _z),
-            isStart = true
+            isStart = true,
+            isStatic =false
         }) ;
         return ee;
     }
@@ -113,7 +118,26 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         });
         return ee;
     }
-
+    public Entity CreateEffBoom(float x, float y)
+    {
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
+        var ecb = ecbSingleton.CreateCommandBuffer(entityManager.WorldUnmanaged);
+        GameEntitiesComponentData data = SystemAPI.GetSingleton<GameEntitiesComponentData>();
+        var ee = entityManager.Instantiate(data.m_EffectBoomPrefabEntity);
+        LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 1, y));
+        localParam.Scale = 1f;
+        ecb.SetComponent(ee, localParam);
+        ecb.AddComponent<PlayerBulletData>(ee, new PlayerBulletData()
+        {
+            timeLife = 0.5f,
+            currentLife = 0f,
+            direction = new float3(1, 0, 0),
+            isStart = true,
+            isStatic = true
+        });
+        return ee;
+    }
     public void RecycleBullet(Entity ee) {
         //Debug.Log("RecycleBullet "+ee.Index);
         bulletsPool.Add(ee);
@@ -182,11 +206,45 @@ public partial struct GameSpawnEntitiesSystem : ISystem
             return ecb.AsParallelWriter();
         }
     }
+    [BurstCompile]
+    partial struct MoveNpcSystem : ISystem
+    {
+        void OnCreate(ref SystemState state)
+        {
+            state.RequireForUpdate<NpcMoveData>();
+        }
+        void OnUpdate(ref SystemState state)
+        {
+            EntityCommandBuffer.ParallelWriter ecb = GetEntityCommandBuffer(ref state);
+            var entityQuery = SystemAPI.QueryBuilder().WithAll<NpcMoveData>().Build();
+            var tempEntities = entityQuery.ToEntityArray(Allocator.TempJob);
+            var moveJob = new MoveNpcJob
+            {
+                moveSpeed = SystemAPI.Time.DeltaTime,
+                entities = tempEntities,
+                entityManager = state.EntityManager,
+                entityWriter = ecb
+            };
+            var moveJobHandle = moveJob.Schedule(tempEntities.Length, 64);
+            moveJobHandle.Complete();
+            tempEntities.Dispose();//释放完成的entity的job
+        }
+        private EntityCommandBuffer.ParallelWriter GetEntityCommandBuffer(ref SystemState state)
+        {
+            var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
+            var ecb = ecbSingleton.CreateCommandBuffer(state.WorldUnmanaged);
+            return ecb.AsParallelWriter();
+        }
+    }
     struct PlayerMoveData : IComponentData
     {
         public float3 direction;
     }
-  
+    struct NpcMoveData : IComponentData
+    {
+        public Entity targetEntity;
+    }
+
     [BurstCompile]
     partial struct MovePlayerJob : IJobParallelFor {
         [ReadOnly]
@@ -214,6 +272,38 @@ public partial struct GameSpawnEntitiesSystem : ISystem
             var offset = direction ;
             transform.Rotation = Quaternion.LookRotation(offset);
             transform.Position += offset * moveSpeed * 1;
+            entityWriter.SetComponent(index, entity, transform);
+        }
+    }
+    [BurstCompile]
+    partial struct MoveNpcJob : IJobParallelFor
+    {
+        [ReadOnly]
+        public float moveSpeed;
+        [ReadOnly]
+        public float3 m_direction;
+        [ReadOnly]
+        public NativeArray<Entity> entities;
+        [NativeDisableParallelForRestriction]
+        public EntityManager entityManager;
+        [WriteOnly]
+        public EntityCommandBuffer.ParallelWriter entityWriter;
+        [BurstCompile]
+        public void Execute(int index)
+        {
+            var entity = entities[index];
+            var tPointData = entityManager.GetComponentData<NpcMoveData>(entity);
+            //var direction = tPointData.direction;
+            var transform = entityManager.GetComponentData<LocalTransform>(entity);
+            float3 curPoint = transform.Position;
+            var direction = entityManager.GetComponentData<LocalTransform>(tPointData.targetEntity).Position- curPoint;
+            if (direction.Equals(float3.zero))
+            {
+                return;
+            }
+            var offset = direction;
+            transform.Rotation = Quaternion.LookRotation(offset);
+            transform.Position += offset * moveSpeed * 0.25f;
             entityWriter.SetComponent(index, entity, transform);
         }
     }
@@ -259,6 +349,9 @@ public partial struct GameSpawnEntitiesSystem : ISystem
                 //spawnEntitiesSystem.RecycleBullet(entity);
                 entityWriter.DestroyEntity(index, entity);
                 //tPointData.isStart = false;
+                return;
+            }
+            if (tPointData.isStatic) {
                 return;
             }
             //var direction = tPointData.direction;
