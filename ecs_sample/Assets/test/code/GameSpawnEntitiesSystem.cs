@@ -130,6 +130,26 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         ecb.SetComponent(ee, localParam);
         ecb.AddComponent<PlayerBulletData>(ee, new PlayerBulletData()
         {
+            timeLife = 0.2f,
+            currentLife = 0f,
+            direction = new float3(1, 0, 0),
+            isStart = true,
+            isStatic = true
+        });
+        return ee;
+    }
+    public Entity CreateEffBoomTest(float x, float y)
+    {
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
+        var ecb = ecbSingleton.CreateCommandBuffer(entityManager.WorldUnmanaged);
+        GameEntitiesComponentData data = SystemAPI.GetSingleton<GameEntitiesComponentData>();
+        var ee = entityManager.Instantiate(data.m_EffectBoomPrefabEntity);
+        LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 1, y));
+        localParam.Scale = 1f;
+        ecb.SetComponent(ee, localParam);
+        ecb.AddComponent<PlayerBulletData>(ee, new PlayerBulletData()
+        {
             timeLife = 0.5f,
             currentLife = 0f,
             direction = new float3(1, 0, 0),

@@ -95,11 +95,29 @@ public class GamePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.T))
+        {
+            entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+            SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
+            GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
+            spawnEntitiesSystem.CreateEffBoomTest(UnityEngine.Random.Range(-50,50), UnityEngine.Random.Range(-50, 50));
+            //spawnEntitiesSystem.CreateEffBoomTest(0,0);
+            //for (int i=0;i<30;i++) {
+            //    for (int j=0;j<30;j++) {
+            // spawnEntitiesSystem.CreateEffBoomTest(i, j);
+            //    }
+            //}
+        }
+      
+  
         if (entityIsCreate == false)
         {
             return;
         }
-        totalNum.text = entityManager.GetAllEntities().Length.ToString();
+        if (entityManager != null)
+        {
+            totalNum.text = entityManager.GetAllEntities().Length.ToString();
+        }
         if (Input.GetKeyDown(KeyCode.M))
         {
             entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
