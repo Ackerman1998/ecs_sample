@@ -1,3 +1,4 @@
+using DOTS.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -124,10 +125,23 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
         var ecb = ecbSingleton.CreateCommandBuffer(entityManager.WorldUnmanaged);
         GameEntitiesComponentData data = SystemAPI.GetSingleton<GameEntitiesComponentData>();
-        var ee = entityManager.Instantiate(data.m_EffectBoomPrefabEntity);
+        var entityTemp = EntityPool.GetEntity();
+        Entity ee;
+        if (entityTemp != Entity.Null)
+        {
+            //Debug.LogError("entityTemp != Entity.Null");
+            ee = entityTemp;
+        }
+        else
+        {
+            //Debug.LogError("entityTemp Instantiate");
+            //Debug.LogError("entityTemp == Entity.Null");
+            ee = entityManager.Instantiate(data.m_EffectBoomPrefabEntity);
+        }
         LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 1, y));
         localParam.Scale = 1f;
         ecb.SetComponent(ee, localParam);
+        ecb.SetEnabled(ee,true);
         ecb.AddComponent<PlayerBulletData>(ee, new PlayerBulletData()
         {
             timeLife = 0.2f,
@@ -144,7 +158,16 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         var ecbSingleton = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>();
         var ecb = ecbSingleton.CreateCommandBuffer(entityManager.WorldUnmanaged);
         GameEntitiesComponentData data = SystemAPI.GetSingleton<GameEntitiesComponentData>();
-        var ee = entityManager.Instantiate(data.m_EffectBoomPrefabEntity);
+        var entityTemp = EntityPool.GetEntity();
+        Entity ee;
+        if (entityTemp != Entity.Null)
+        {
+            ee = entityTemp;
+        }
+        else {
+
+            ee = entityManager.Instantiate(data.m_EffectBoomPrefabEntity);
+        }
         LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 1, y));
         localParam.Scale = 1f;
         ecb.SetComponent(ee, localParam);
@@ -158,6 +181,7 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         });
         return ee;
     }
+    
     public void RecycleBullet(Entity ee) {
         //Debug.Log("RecycleBullet "+ee.Index);
         bulletsPool.Add(ee);
@@ -365,9 +389,17 @@ public partial struct GameSpawnEntitiesSystem : ISystem
                 //else {
                 //    buffer.Add(new PoolBuffer(entity));
                 //}
-             
+
                 //spawnEntitiesSystem.RecycleBullet(entity);
-                entityWriter.DestroyEntity(index, entity);
+                if (tPointData.isStatic)
+                {
+                    entityWriter.SetEnabled(index, entity, false);
+                    entity.PushEntity();
+                }
+                else
+                {
+                    entityWriter.DestroyEntity(index, entity);
+                }
                 //tPointData.isStart = false;
                 return;
             }

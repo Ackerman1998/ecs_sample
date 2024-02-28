@@ -1,4 +1,5 @@
 using ClientComponents.Base;
+using DOTS.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class GamePlayer : MonoBehaviour
@@ -29,6 +31,7 @@ public class GamePlayer : MonoBehaviour
         _instance = this;
         entityIsCreate = false;
         Application.targetFrameRate = 60;
+        EntityPool.Init();
     }
     // Start is called before the first frame update
     void Start()
@@ -41,6 +44,10 @@ public class GamePlayer : MonoBehaviour
             CreateScene();
             CreatePlayer();
         }
+    }
+    private void OnDestroy()
+    {
+        EntityPool.Destroy();
     }
     public void Init()
     {
@@ -95,12 +102,22 @@ public class GamePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.Y)) {
+        //    entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        //    SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<RemoveToPool>();
+        //    RemoveToPool spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<RemoveToPool>(ssh);
+        //    spawnEntitiesSystem.Init();
+
+        //}
         if (Input.GetKey(KeyCode.T))
         {
             entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<GameSpawnEntitiesSystem>();
             GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
-            spawnEntitiesSystem.CreateEffBoomTest(UnityEngine.Random.Range(-50,50), UnityEngine.Random.Range(-50, 50));
+            spawnEntitiesSystem.CreateEffBoomTest(UnityEngine.Random.Range(-50, 50), UnityEngine.Random.Range(-50, 50));
+            //SystemHandle ssh = entityManager.WorldUnmanaged.GetExistingUnmanagedSystem<RemoveToPool>();
+            //RemoveToPool spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<RemoveToPool>(ssh);
+            //spawnEntitiesSystem.CreateBullet(UnityEngine.Random.Range(-50, 50), UnityEngine.Random.Range(-50, 50));
             //spawnEntitiesSystem.CreateEffBoomTest(0,0);
             //for (int i=0;i<30;i++) {
             //    for (int j=0;j<30;j++) {
@@ -108,8 +125,8 @@ public class GamePlayer : MonoBehaviour
             //    }
             //}
         }
-      
-  
+
+
         if (entityIsCreate == false)
         {
             return;
@@ -187,3 +204,15 @@ public class GamePlayer : MonoBehaviour
         spawnEntitiesSystem.CreateBulletDirection(curPoint.x, curPoint.z, -x, -y);
     }
 }
+#if UNITY_EDITOR
+[CustomEditor(typeof(GamePlayer))]
+public class GamePlayerEditor : Editor {
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        if (GUILayout.Button("test")) {
+            Debug.LogError("current num = "+ EntityPool.pools.Count);
+        }
+    }
+}
+#endif

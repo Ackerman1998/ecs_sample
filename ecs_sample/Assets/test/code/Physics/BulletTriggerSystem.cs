@@ -7,6 +7,8 @@ using Unity.Physics.Stateful;
 using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.Profiling;
+
 [UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateAfter(typeof(StatefulTriggerEventSystem))]
 public partial struct BulletTriggerSystem : ISystem
@@ -43,7 +45,9 @@ public partial struct BulletTriggerSystem : ISystem
                     GameSpawnEntitiesSystem spawnEntitiesSystem = entityManager.WorldUnmanaged.GetUnsafeSystemRef<GameSpawnEntitiesSystem>(ssh);
                     var transform = entityManager.GetComponentData<LocalTransform>(entity);
                     float3 curPoint = transform.Position;
+                    Profiler.BeginSample("Create Eff Boom");
                     spawnEntitiesSystem.CreateEffBoom(curPoint.x, curPoint.z);
+                    Profiler.EndSample();
                     ecb.DestroyEntity(otherEntity);
                     ecb.DestroyEntity(entity);
                 }
