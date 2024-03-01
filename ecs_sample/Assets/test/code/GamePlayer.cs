@@ -81,13 +81,15 @@ public class GamePlayer : MonoBehaviour
         int direction = UnityEngine.Random.Range(0, 2) == 1 ? 1 : -1;
         var transform = entityManager.GetComponentData<LocalTransform>(entity);
         float3 curPoint = transform.Position;
+        int max = 70;
+        int min = 30;
         if (direction == 1)
         {
 
-            spawnEntitiesSystem.CreateNpc(curPoint.x+GetRandomNumByRange(30, 70), curPoint.z + GetRandomNumByRange(0, 70));
+            spawnEntitiesSystem.CreateNpc(curPoint.x+GetRandomNumByRange(min, max), curPoint.z + GetRandomNumByRange(0, max));
         }
         else {
-            spawnEntitiesSystem.CreateNpc(curPoint.x + GetRandomNumByRange(0, 70), curPoint.z + GetRandomNumByRange(30, 70));
+            spawnEntitiesSystem.CreateNpc(curPoint.x + GetRandomNumByRange(0, max), curPoint.z + GetRandomNumByRange(min, max));
         }
   
     }
@@ -185,6 +187,15 @@ public class GamePlayer : MonoBehaviour
             CreateNpc();
             CreateNpc();
             CreateNpc();
+
+            //CreateNpc();
+            //CreateNpc();
+            //CreateNpc();
+            //CreateNpc();
+            //CreateNpc();
+            //CreateNpc();
+            //CreateNpc();
+            //CreateNpc();
             //CreateNpc();
             //CreateNpc();
         }
