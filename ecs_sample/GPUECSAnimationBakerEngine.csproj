@@ -10,10 +10,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{CE40C988-AFA6-A260-5787-302F5C3FC9DD}</ProjectGuid>
+    <ProjectGuid>{95AD378A-64DA-5BE0-32B8-18507F6BEBCC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Unity.Physics.Custom</AssemblyName>
+    <AssemblyName>GPUECSAnimationBakerEngine</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -27,7 +27,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -72,45 +72,50 @@
     <Analyzer Include="D:\Ackerman\GProject\ecs_sample\ecs_sample\Library\PackageCache\com.unity.entities@1.0.10\Unity.Entities\SourceGenerators\Unity.Entities.SourceGen.JobEntityGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Motors\PositionMotor.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\PhysicsCategoryNames.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\PhysicsCategoryTags.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Utilities\BakeGeometryJobs.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\CustomPhysicsMaterialTags.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Joints\BallAndSocketJoint.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\BaseBodyPairConnector.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Motors\AngularVelocityMotor.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Utilities\PropertyAttributes.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\PhysicsMaterialTemplate.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Bodies\PhysicsBodyAuthoring.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Joints\RigidJoint.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\PhysicsMaterialProperties.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Utilities\CapsuleGeometryAuthoring.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Utilities\GetActiveChildrenScope.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Bodies\BakingSystems\PhysicsBodyBakingSystem.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Utilities\EulerAngles.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Bodies\PhysicsShapeAuthoring.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Joints\ModifyJointLimitsAuthoring.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\PhysicsRenderEntityAuthoring.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Utilities\BakeGeometryJobsExtensions.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Motors\RotationalMotor.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Utilities\PhysicsShapeExtensions.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Joints\LimitedDistanceJoint.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\CustomPhysicsMaterialTagNames.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\EditorInitialization.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\AssemblyInfo.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Joints\BaseJoint.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Motors\LinearVelocityMotor.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Utilities\ConvexHullGenerationParametersExtensions.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Joints\FreeHingeJoint.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Joints\LimitDOFJoint.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Joints\PrismaticJoint.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Bodies\BakingSystems\PhysicsShapeBakingSystem.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Joints\RagdollJoint.cs" />
-    <Compile Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Joints\LimitedHingeJoint.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AnimationMatricesTexture.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\GlobalConstants.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AnimationTypes.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAnimationData.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AnimatorStateDrawer.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AttachmentAnchor.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAnimatorControlComponents.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Baker\GpuEcsAnimationBakerMenu.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\GpuEcsAnimationBakerDataDrawer.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAttachmentAnchorData.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Baker\GpuEcsAnimationBakeServices.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAnimatedMeshSystem.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AnimationDataDrawer.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAnimatorSystem.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AttachmentAnchorDrawer.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AnimatorParameterDrawer.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAnimatedMeshBehaviour.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Baker\GpuEcsAnimationBakerBehaviour.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AnimatorState.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AnimationData.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AnimatorParameterTypes.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\SingleClipData.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\GpuEcsAnimationBakerData.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAnimatedMeshComponents.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAnimatorInitializerBehaviour.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\BoneUsage.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\BoneUsagePerLoD.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAttachmentSystem.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAnimatorBehaviour.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAnimatorAspect.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAttachmentBehaviour.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\BoneUsagePerLoDDrawer.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAttachmentComponents.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\EcsGpuMaterial.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\DualClipBlendData.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Baker\GpuEcsAnimationBakerEditor.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Data\AnimatorParameter.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAnimatorComponents.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\Baker\GpuEcsAnimationEventBakerBehaviour.cs" />
+    <Compile Include="Assets\GPUECSAnimationBaker\Engine\AnimatorSystem\GpuEcsAttachmentInitializerBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Samples\Unity Physics\1.0.10\Custom Physics Authoring\Unity.Physics.Custom\Unity.Physics.Custom.asmdef" />
+    <None Include="Assets\GPUECSAnimationBaker\Engine\GPUECSAnimationBakerEngine.asmdef" />
+    <None Include="Assets\GPUECSAnimationBaker\Engine\Shader\GpuEcsAnimator.cginc" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -889,32 +894,28 @@
       <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Collections">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Entities.Graphics">
+      <HintPath>Library\ScriptAssemblies\Unity.Entities.Graphics.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Entities">
       <HintPath>Library\ScriptAssemblies\Unity.Entities.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Entities.Hybrid">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Hybrid.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Physics">
-      <HintPath>Library\ScriptAssemblies\Unity.Physics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Physics.Hybrid">
-      <HintPath>Library\ScriptAssemblies\Unity.Physics.Hybrid.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Transforms">
       <HintPath>Library\ScriptAssemblies\Unity.Transforms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Entities.Hybrid">
+      <HintPath>Library\ScriptAssemblies\Unity.Entities.Hybrid.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">

@@ -29,7 +29,7 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         GameEntitiesComponentData data = SystemAPI.GetSingleton<GameEntitiesComponentData>();
         var ee = entityManager.Instantiate(data.m_PrefabEntity);
         LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 1, y));
-        localParam.Scale = 1f;
+        localParam.Scale = 0.5f;
         ecb.SetComponent(ee, localParam);
         ecb.AddComponent<PlayerMoveData>(ee, new PlayerMoveData()
         {
@@ -44,7 +44,7 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         var ecb = ecbSingleton.CreateCommandBuffer(entityManager.WorldUnmanaged);
         GameEntitiesComponentData data = SystemAPI.GetSingleton<GameEntitiesComponentData>();
         var ee = entityManager.Instantiate(data.m_NpcPrefabEntity);
-        LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 2, y));
+        LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 0.5f, y));
         localParam.Scale = 1f;
         ecb.SetComponent(ee, localParam);
       
@@ -81,7 +81,7 @@ public partial struct GameSpawnEntitiesSystem : ISystem
             _z = 1;
         }
         LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 1, y));
-        localParam.Scale = 0.8f;
+        localParam.Scale = 0.3f;
         ecb.SetComponent(ee, localParam);
         ecb.AddComponent<PlayerBulletData>(ee, new PlayerBulletData()
         {
@@ -108,7 +108,7 @@ public partial struct GameSpawnEntitiesSystem : ISystem
         //    _z = 1;
         //}
         LocalTransform localParam = LocalTransform.FromPosition(new float3(x, 1, y));
-        localParam.Scale = 0.8f;
+        localParam.Scale = 0.3f;
         ecb.SetComponent(ee, localParam);
         ecb.AddComponent<PlayerBulletData>(ee, new PlayerBulletData()
         {
@@ -347,7 +347,7 @@ public partial struct GameSpawnEntitiesSystem : ISystem
             }
             var offset = direction;
             transform.Rotation = Quaternion.LookRotation(offset);
-            transform.Position += offset * moveSpeed * 0.25f;
+            transform.Position += offset * moveSpeed * 0.05f;
             entityWriter.SetComponent(index, entity, transform);
         }
     }

@@ -81,8 +81,8 @@ public class GamePlayer : MonoBehaviour
         int direction = UnityEngine.Random.Range(0, 2) == 1 ? 1 : -1;
         var transform = entityManager.GetComponentData<LocalTransform>(entity);
         float3 curPoint = transform.Position;
-        int max = 70;
-        int min = 30;
+        int max = 30;
+        int min = 10;
         if (direction == 1)
         {
 

@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7522959830639335080, guid: acb95d0aef77aba48adb304095fe20b3, type: 3}
-  npc: {fileID: 3414761862050206358, guid: 462de77d47ba5a742ad7155f6ec08392, type: 3}
+  npc: {fileID: 3414761862050206358, guid: 6577263ff4f1c144b83cf199a226ef3c, type: 3}
   bullet: {fileID: 3936063760698274956, guid: 8a49dd75d44cf0049a0ffe8ab24980bd, type: 3}
   scene: {fileID: 8907705488032738410, guid: f0352eefed959f74c8b6464af85b3c0f, type: 3}
   effect_Boom: {fileID: 4496995801711938426, guid: 33c11919496148a49b6083e52abbd4fe, type: 3}

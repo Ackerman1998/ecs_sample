@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Physics.Custom", "Unity.Physics.Custom.csproj", "{CE40C988-AFA6-A260-5787-302F5C3FC9DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPUECSAnimationBakerEngine", "GPUECSAnimationBakerEngine.csproj", "{95AD378A-64DA-5BE0-32B8-18507F6BEBCC}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Physics.Custom.Editor", "Unity.Physics.Custom.Editor.csproj", "{4054F283-2E1B-5AD8-7572-08BF8BB5247F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{5B6E52D6-AD56-0429-9138-6BEECDED5604}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPUECSAnimationBakerSamples", "GPUECSAnimationBakerSamples.csproj", "{960B8F62-35E7-3A82-E369-66B061BB9ECF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +21,10 @@ Global
 		{CE40C988-AFA6-A260-5787-302F5C3FC9DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE40C988-AFA6-A260-5787-302F5C3FC9DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE40C988-AFA6-A260-5787-302F5C3FC9DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95AD378A-64DA-5BE0-32B8-18507F6BEBCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95AD378A-64DA-5BE0-32B8-18507F6BEBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95AD378A-64DA-5BE0-32B8-18507F6BEBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95AD378A-64DA-5BE0-32B8-18507F6BEBCC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4054F283-2E1B-5AD8-7572-08BF8BB5247F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4054F283-2E1B-5AD8-7572-08BF8BB5247F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4054F283-2E1B-5AD8-7572-08BF8BB5247F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -25,6 +33,10 @@ Global
 		{5B6E52D6-AD56-0429-9138-6BEECDED5604}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B6E52D6-AD56-0429-9138-6BEECDED5604}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B6E52D6-AD56-0429-9138-6BEECDED5604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{960B8F62-35E7-3A82-E369-66B061BB9ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{960B8F62-35E7-3A82-E369-66B061BB9ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{960B8F62-35E7-3A82-E369-66B061BB9ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{960B8F62-35E7-3A82-E369-66B061BB9ECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
